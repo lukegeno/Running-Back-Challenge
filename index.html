@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Running Back Challenge</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <nav class = "navbar navbar-default navbar-static-top">
+        <div class = "container">
+            <div class = "brand">
+                <h1>#26 Running Back Challenge</h1>
+            </div>
+            <div class = "Menu">
+                <button class = "navbartoggle" data-toggle="collapse" data-target = ".navHeaderCollapse">
+                    <span class = "icon-bar"></span>
+                    <span class = "icon-bar"></span>
+                    <span class = "icon-bar"></span>
+                </button>
+            <div class = "collapse navbar-collapse navHeaderCollapse">
+                <ul class = "nav navbar-nav navbar-right">
+                    <li class = "active"><a href = "#Home">Home</a></li>
+                    <li><a href = "#GenoyerIO">Github</a></li>
+                    <li><a href = "#Contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class = "container">
+    <div class = "row">
+        <div class = "col-sm">
+        <div class = "container directions">
+            <p>Use the left and right arrow keys to dodge B1G Ten defenders and score touchdowns. Run around opponents with #26 to find the Penn State end zone! The game is over when you get tackled 3 times. </p>
+            <img src = "./images/arrows.png" class = "img-fluid" alt = "Arrow Keys" />
+        </div>
+
+        <div class = "container image-barkley">
+            <img src = "./images/saquon 1.jpg" class = "img-fluid" alt = "PSU #26" />
+        </div>
+        </div>
+    </div>
+        <div class = "col-sm">
+        <div class = "container game">
+            <canvas id = "game" width = "420" height="620"></canvas>
+        </div>
+        </div>
+</div>
+
+    <div class = "container form">
+        <form>
+            <div class = "form-group">
+                <label for = "exampleInputName1">Name</label>
+                <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter your first name" >
+            </div>
+            <div class = "form-group">
+                <label for = "exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email address" >
+            </div>
+            <button type = "submit" class = "btn btn primary">Play Music!</button>
+        </form>
+    </div>
+
+    <div class = "container image-franklin">
+        <img src = "./images/franklin.jpg" class = "img-rounded" alt = "PSU coach" />
+    </div>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "./js/scripts.js"></script>
+</body>
+</html>
+
