@@ -1,14 +1,32 @@
-function Defender(myX, myY, myW, myH) {
+// var lives = 3;
+// var myScore = ;
+
+// function startGame() {
+
+// }
+
+function Defender(myX, myY, myW, myH, mySpeed, image) {
     this.x = myX;
     this.y = myY;
     this.width = myW;
     this.height = myH;
+    this.speed = mySpeed;
+    this.image = image;
 }
 
+var defenderImage = new Image();
+    defenderImage.src = './images/osu defender.png'; 
+
 Defender.prototype.drawMe = function() {
-    ctx.fillStyle = 'rgb(187,0,0)';
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(defenderImage, this.x, this.y, this.width, this.height);
+    //ctx.fillStyle = 'rgb(187,0,0)';
+    //ctx.fillRect(this.x, this.y, this.width, this.height);
 };
+
+Defender.prototype.outOfBounds = function() {
+    return this.y >= 600;
+}
+
 
 function getTop(obj) {
     return obj.y;
@@ -48,7 +66,7 @@ var ctx = canvas.getContext('2d');
 
 
 var barkleyImage = new Image();
-barkleyImage.src = './images/barkley.jpg';
+barkleyImage.src = './images/saquon barkley.png';
 var barkley = {
     x: canvas.width / 2,
     y: 550,
@@ -57,30 +75,67 @@ var barkley = {
     drawMe: function() {
         ctx.drawImage(barkleyImage, this.x, this.y, this.width, this.height);
     },
+
 };
 
+//dynamically change array over time
+
 var allDefenders = [
-    new Defender(100, 100, 50, 50),
-    new Defender(300, 150, 50, 50),
-    new Defender(200, 250, 50, 50),
-    new Defender(50, 75, 50, 50),
-    new Defender(350, 250, 50, 50),
+    new Defender(100, 100, 30, 30, 2, defenderImage),
+    new Defender(300, 150, 30, 30, 2, defenderImage),
+    new Defender(200, 250, 30, 30, 2, defenderImage),
+    new Defender(50, 75, 30, 30, 2, defenderImage),
+    new Defender(350, 250, 30, 30, 2, defenderImage),
 ];
 
+//know when defender is out of bounds .. method is out of bounds. or function 
+//remove defender from array and add new ones.
+//add defenders speeds to constructor and oneDefender.y += speed of defender;
+
+function getX() {
+var newX = Math.floor(Math.random() * 344)
+//while loop until i get a legal x - check all defenders
+return newX
+};
+
+function randomSpeed() {
+    return Math.floor(Math.random() * 5 + 1)
+};
+
+console.log(allDefenders);
+
 function updateStuff() {
+    if (barkley.y <= 30) {
+    ctx.font = "20px Arial";
+    ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
+    return;
+    }
     ctx.clearRect(0,0, canvas.width, canvas.height);
     barkley.drawMe();
-    allDefenders.forEach(function(oneDefender) {
-        oneDefender.y += 2;
+    allDefenders.forEach(function(oneDefender, i) {
+        oneDefender.y += oneDefender.speed;
+        console.log(oneDefender.speed);
         oneDefender.drawMe();
         
-        if (oneDefender.y <= oneDefender.height) {
-            oneDefender.y = canvas.height;
+        // if (oneDefender.y <= oneDefender.height) {
+        //     oneDefender.y = canvas.height;
+        // }
+        if (oneDefender.outOfBounds()) {
+        allDefenders.splice(i, 1)
         }
     });
 
+    while (allDefenders.length < 5) {
+        allDefenders.push(new Defender (getX(),0,30,30,randomSpeed(),defenderImage));
+    };
+
     if (defenderCollision()) {
+        ctx.font = "20px Arial";
+        ctx.fillText("You were tackled. Next down.", canvas.width/ 2, canvas.height / 2);
+        lives -= 1;
         return;
+
+        //add what happens after tackle. paint it on the canvas. draw a square on the canvas
 }
 
     requestAnimationFrame(function() {
@@ -95,7 +150,6 @@ body.onkeydown = function() {
     if (defenderCollision()) {
         return;
     }
-
     switch (event.keyCode) {
         case 37:
         case 65:
@@ -109,107 +163,21 @@ body.onkeydown = function() {
         case 68:
             barkley.x += 5;
             break;
-        case 68:
+        case 83:
         case 40:
             barkley.y += 5;
             break;
+        //juke left
+        case 81:
+            barkley.x -= 15;
+            break;
+        //juke right
+        case 69:
+            barkley.x += 15;
+            break;
+        //turbo button
+        case 50:
+            barkley.y -= 15;
     }
 };
 
-
-
-// function draw() {
-//     var canvas = document.getElementById('myGameArea');
-//     var ctx = canvas.getContext('2d');
-//     var numSquares = 8;
-//     ctx.fillRect(200,525,70,60);
-
-//     for (var n = 0; n < numSquares; n ++){
-//         var x = Math.floor((Math.random() * 450) + 1);
-//         var y = Math.floor((Math.random() * 450) + 1);
-//         var width = 60;
-//         var height = 60;
-//         //var width = Math.floor((Math.random() * 300) + 100);
-//         //var height = Math.floor((Math.random() * 300) + 100);
-//         ctx.fillRect(x,y,width,height);
-//     }
-    
-//     }
-    
-//     draw();
-// function drawSquare(xPos, yPos, height, width){
-
-//     context.fillRect(xPos, yPos, 60, 50);
-// }
-
-
-
-
-//var barkleyImage = new Image();
-//barkleyImage.src = './images/barkley1.jpg'
-// var barkley = {
-//     x: canvas.width / 2,
-//     y: 0,
-//     width: 50,
-//     height: 60,
-//     drawMe: function() {
-//         ctx.drawImage(x,y,width,height);
-//     },
-// };
-// var allRectangles = [
-//     new Rectangle(200, 100, 50, 50),
-//     new Rectangle(250, 100, 50, 50),
-//     new Rectangle(250, 100, 50, 50),
-// ]
-
-
-
-// function draw() {
-
-
-//     ctx.fillRect(200,525,50,60);
-
-// var allRectangles = [];
-
-//     for (var n = 0; n <=8; n ++) {
-//         var x
-//         var y
-//         while (collision(x, y, allRectangles)) {
-//             var x = Math.floor((Math.random()*450) + 1)
-//             var y = Math.floor((Math.random()*390) + 1)
-//         }
-//         var width = 40;
-//         var height = 60;
-//         ctx.fillRect(x,y,width,height);
-//     }
-
-
-
-//     // for (var n = 0; n <= 4; n ++) {
-//     //     var x = Math.floor((Math.random()*450) + 1);
-//     //     var y = Math.floor((Math.random()*400) + 1);
-//     //     var width = 40;
-//     //     var height = 60;
-//     //     ctx.fillRect(x,y,width,height);
-//     // }
-
-// }
-    
-// draw();
-
-//     // for (var n = 0; n <= numSquares; n ++){
-//     //     var x = Math.floor((Math.random() * 450) + 1);
-//     //     var y = Math.floor((Math.random() * 450) + 1);
-//     //     var width = 60;
-//     //     var height = 60;
-//     //     //var width = Math.floor((Math.random() * 300) + 100);
-//     //     //var height = Math.floor((Math.random() * 300) + 100);
-//     //     ctx.fillRect(x,y,width,height);
-//     // }
-    
-//     // }
-    
-//     // draw();
-
-
-  
