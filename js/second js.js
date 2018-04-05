@@ -1,10 +1,16 @@
 function startGame() {
 
-//     var score=0;
-// if (barkley.y <= 30) {
-//     score = score + 7;
-// } else score = score;
-
+var touchdownImage = new Image();
+    touchdownImage.src = "https://media.giphy.com/media/l378pCaLVyBHA4HGE/giphy.gif";
+var touchdownMessage = {
+    x: 130,
+    y: 250,
+    width: 100,
+    height: 100,
+    drawMe: function() {
+        ctx.drawImage(touchdownImage, this.x, this.y, this.width, this.height)
+    }
+}
 
 function Defender(myX, myY, myW, myH, mySpeed, image) {
     this.x = myX;
@@ -107,10 +113,12 @@ console.log(allDefenders);
 
 
 
+
 function updateStuff() {
     if (barkley.y <= 30) {
-    ctx.font = "20px Arial";
-    ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
+    touchdownMessage.drawMe();
+    //     ctx.font = "20px Arial";
+    // ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
     score += 7;
     document.getElementById ("score-id").innerText= score;
     setTimeout (startGame, 3000);
@@ -171,7 +179,7 @@ body.onkeydown = function() {
     switch (event.keyCode) {
         case 37:
         case 65:
-        if (barkley.x <= 5){
+        if (barkley.x <= 1){
             barkley.x = barkley.x;}
         else{
             barkley.x -= 5;
@@ -179,23 +187,40 @@ body.onkeydown = function() {
             break;
         case 87:
         case 38:
-            barkley.y -= 5 
+        if (barkley.y <= 0){
+            barkley.y = barkley.y;}
+        else{
+            barkley.y -= 5;
+            }
             break;
         case 39: 
         case 68:
-            barkley.x += 5;
+        if (barkley.x >= 294){
+            barkley.x = barkley.x;}
+        else {
+            barkley.x += 5;}
             break;
         case 83:
         case 40:
+        if (barkley.y >= 550){
+            barkley.y = barkley.y;}
+        else {
             barkley.y += 5;
+        }            
             break;
         //juke left
         case 81:
-            barkley.x -= 15;
+        if (barkley.x <= 3){
+            barkley.x = barkley.x;}
+        else{
+            barkley.x -= 15;}
             break;
         //juke right
         case 69:
-            barkley.x += 15;
+        if (barkley.x >= 294){
+            barkley.x = barkley.x;}
+        else{
+            barkley.x += 15;}
             break;
         //turbo button
         case 50:
