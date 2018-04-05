@@ -134,7 +134,9 @@ var score = 0;
         allDefenders.splice(i, 1)
         }
     });
+ 
 
+// github
     while (allDefenders.length < 5) {
         allDefenders.push(new Defender (getX(),0,30,30,randomSpeed(),defenderImage));
     };
