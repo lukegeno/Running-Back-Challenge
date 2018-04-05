@@ -1,8 +1,4 @@
-
-
 function startGame() {
-
-    // var down;
     
 
 //     var score=0;
@@ -113,7 +109,6 @@ console.log(allDefenders);
 
 
 function updateStuff() {
-var score = 0;
     if (barkley.y <= 30) {
     ctx.font = "20px Arial";
     ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
@@ -144,10 +139,24 @@ var score = 0;
     if (defenderCollision()) {
         ctx.font = "20px Arial";
         ctx.fillText("You were tackled. Next down.", canvas.width/ 2, canvas.height / 2);
-        // lives -= 1;
+        down += 1;
+        document.getElementById ("down-id").innerText=down;
+        setTimeout (startGame, 3000);
         return;
 
         //add what happens after tackle. paint it on the canvas. draw a square on the canvas
+}
+
+if (down >= 4) {
+    alert("Game Over!")
+
+    //Start over button
+}
+
+if (score >= 28) {
+    alert("Penn State Wins!")
+
+    //next round / play again button
 }
 
     requestAnimationFrame(function() {
@@ -203,7 +212,11 @@ window.addEventListener("keydown", function(e) {
 
 }
 
-var score = 0;
+var score = document.querySelector ("#lblScore");
+score.innerHTML = 0
+var down = 1;
+
+
 
 function drawScore() {
     ctx.font = "16px Arial";
