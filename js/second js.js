@@ -1,5 +1,4 @@
 function startGame() {
-    
 
 //     var score=0;
 // if (barkley.y <= 30) {
@@ -113,6 +112,8 @@ function updateStuff() {
     ctx.font = "20px Arial";
     ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
     score += 7;
+    document.getElementById ("score-id").innerText= score;
+    setTimeout (startGame, 3000);
     return;
     }
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -121,10 +122,6 @@ function updateStuff() {
         oneDefender.y += oneDefender.speed;
         console.log(oneDefender.speed);
         oneDefender.drawMe();
-        
-        // if (oneDefender.y <= oneDefender.height) {
-        //     oneDefender.y = canvas.height;
-        // }
         if (oneDefender.outOfBounds()) {
         allDefenders.splice(i, 1)
         }
@@ -140,10 +137,9 @@ function updateStuff() {
         ctx.font = "20px Arial";
         ctx.fillText("You were tackled. Next down.", canvas.width/ 2, canvas.height / 2);
         down += 1;
-        document.getElementById ("down-id").innerText=down;
+        document.getElementById ("down-id").innerText= down;
         setTimeout (startGame, 3000);
         return;
-
         //add what happens after tackle. paint it on the canvas. draw a square on the canvas
 }
 
@@ -175,7 +171,11 @@ body.onkeydown = function() {
     switch (event.keyCode) {
         case 37:
         case 65:
+        if (barkley.x <= 5){
+            barkley.x = barkley.x;}
+        else{
             barkley.x -= 5;
+            }
             break;
         case 87:
         case 38:
@@ -212,14 +212,6 @@ window.addEventListener("keydown", function(e) {
 
 }
 
-var score = document.querySelector ("#lblScore");
-score.innerHTML = 0
 var down = 1;
+var score = 0;
 
-
-
-function drawScore() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Score: "+score, 7, 20);
-}
