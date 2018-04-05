@@ -1,9 +1,15 @@
-// var lives = 3;
-// var myScore = ;
 
-// function startGame() {
 
-// }
+function startGame() {
+
+    // var down;
+    
+
+//     var score=0;
+// if (barkley.y <= 30) {
+//     score = score + 7;
+// } else score = score;
+
 
 function Defender(myX, myY, myW, myH, mySpeed, image) {
     this.x = myX;
@@ -104,10 +110,14 @@ function randomSpeed() {
 
 console.log(allDefenders);
 
+
+
 function updateStuff() {
+var score = 0;
     if (barkley.y <= 30) {
     ctx.font = "20px Arial";
     ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
+    score += 7;
     return;
     }
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -132,7 +142,7 @@ function updateStuff() {
     if (defenderCollision()) {
         ctx.font = "20px Arial";
         ctx.fillText("You were tackled. Next down.", canvas.width/ 2, canvas.height / 2);
-        lives -= 1;
+        // lives -= 1;
         return;
 
         //add what happens after tackle. paint it on the canvas. draw a square on the canvas
@@ -140,6 +150,7 @@ function updateStuff() {
 
     requestAnimationFrame(function() {
         updateStuff();
+
 });
 }
 
@@ -181,3 +192,19 @@ body.onkeydown = function() {
     }
 };
 
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
+}
+
+var score = 0;
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Score: "+score, 7, 20);
+}
