@@ -156,7 +156,7 @@ function updateStuff() {
         winMessage.style.display = "inline";
         return;}
     }
-    score = 0;
+    
     document.getElementById ("score-id").innerText= score;
 
     ctx.clearRect(0,0, canvas.width, canvas.height);
