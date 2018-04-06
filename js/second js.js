@@ -1,3 +1,15 @@
+
+var down = 1;
+var score = 0;
+
+
+// function reset () {
+//     score = 0;
+//     down = 0;
+//     startGame();
+// }
+
+
 function startGame() {
 
 var touchdownImage = new Image();
@@ -116,28 +128,41 @@ console.log(allDefenders);
 
 function updateStuff() {
     var scoreMessage = document.querySelector(".touchdownImage");
-    // var tackledMessage = document.querySelector(".tackledImage");
-    // var gameOverMessage = document.querySelector("gameOverImage");
-    // var winMessage = document.querySelector("winImage");
+    var tackledMessage = document.querySelector(".tackledImage");
+    var gameOverMessage = document.querySelector(".gameOverImage");
+    var winMessage = document.querySelector(".winImage");
     scoreMessage.style.display = "none";
-    //tackledMessage.style.display = "none";
-    // gameOverMessage.style.display = "none";
-    // winMessage.style.display = "none";
+    tackledMessage.style.display = "none";
+    gameOverMessage.style.display = "none";
+    winMessage.style.display = "none";
+
+    
+    
     if (barkley.y <= 30) {
-    touchdownMessage.drawMe();
+        if (score < 20) {
+        console.log(score)
+            
+    //touchdownMessage.drawMe();
     scoreMessage.style.display = "inline";
     //     ctx.font = "20px Arial";
     // ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
     score += 7;
     document.getElementById ("score-id").innerText= score;
     setTimeout (startGame, 3000);
-    return;
+    return;}
+    else if (score === 21) {
+        scoreMessage.style.display = "none";
+        var winMessage = document.querySelector(".winImage");
+        winMessage.style.display = "inline";
+        return;}
     }
+    score = 0;
+    document.getElementById ("score-id").innerText= score;
+
     ctx.clearRect(0,0, canvas.width, canvas.height);
     barkley.drawMe();
     allDefenders.forEach(function(oneDefender, i) {
         oneDefender.y += oneDefender.speed;
-        console.log(oneDefender.speed);
         oneDefender.drawMe();
         if (oneDefender.outOfBounds()) {
         allDefenders.splice(i, 1)
@@ -152,26 +177,25 @@ function updateStuff() {
 
     if (defenderCollision()) {
         var tackledMessage = document.querySelector(".tackledImage");
-        ctx.font = "25px Arial";
-        ctx.fillText("You were tackled. Next down.", 100, 300);
+        //ctx.font = "25px Arial";
+        //ctx.fillText("You were tackled. Next down.", 100, 300);
+        if (down <= 3) {
         tackledMessage.style.display = "inline";
         down += 1;
         document.getElementById ("down-id").innerText= down;
         setTimeout (startGame, 3000);
-        return;
+        return;}
+        else {
+        var gameOverMessage = document.querySelector(".gameOverImage");
+        gameOverMessage.style.display = "inline";
+        return;}
         //add what happens after tackle. paint it on the canvas. draw a square on the canvas
 }
 
-if (down >= 4) {
-    var gameOverMessage = document.querySelector("gameOverImage");
-    gameOverMessage.style.display = "inline";
-
-    //Start over button
-}
 
 if (score >= 28) {
     winMessage.style.display = "inline";
-
+    scoreMessage.style.display = "inline";
     //next round / play again button
 }
 
@@ -248,7 +272,3 @@ window.addEventListener("keydown", function(e) {
 }, false);
 
 }
-
-var down = 1;
-var score = 0;
-

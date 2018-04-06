@@ -57,7 +57,15 @@
 }
 
 .messages {
-    border: 1px solid red;
+    margin-top: 1.5em;
+}
+
+.start-game {
+    background-color: #093162;
+    color: white;
+    padding: 5px;
+    margin-left: 30%;
+    width: 10em;
 }
 
 .nav {
