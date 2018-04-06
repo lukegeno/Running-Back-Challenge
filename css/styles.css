@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    background-image: url("http://a.espncdn.com/photo/2017/0821/r247215_1296x729_16-9.jpg");
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.scoreboard {
+    background-color: #093162;
+    color: white;
+    text-align: center;
+}
+
+.instructions {
+    background-color: #093162;
+    color: white;
+    text-align: center;
+}
