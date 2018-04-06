@@ -11,40 +11,72 @@
 </head>
 <body scroll="no">
     
+<div class = "nav">
 
 <h1>Saquon Barkley Running Back Challenge</h1>
 
-<a href="#Home">Home</a>
-<a href="https://github.com/lukegeno" target="_blank">GitHub</a>
+<ul>
+
+    <li><a href="#Home">Home</a></li> 
+    <li><a href="https://github.com/lukegeno" target="_blank">GitHub</a></li>
+
+
+
+</ul>
+
+</div>
 
 <div class = "wrapper">
+
 
 <!--<img src = "./images/barkley 3.jpg">-->
 
 <div class = "container">
 
 <div class = "scoreboard">
-<h2>Score</h2>
-<label>Penn State: <span id="score-id">0</span></label><br>
-<label>Ohio State: 0</label><br>
-<label>Down: <span id="down-id">1</span></label>
+    <h2>Score</h2>
+    <label>Penn State: <span id="score-id">0</span></label><br>
+    <label>Ohio State: 0</label><br>
+    <label>Down: <span id="down-id">1</span></label>
+
+
 </div>
+    
+
+
 
 <div class = "instructions">
 
-<h2>How to Play</h2>
-<p>Controls: W (run), A (left), S (back), D (right)</p>
-<p>Special Moves: Q (juke left), E (juke right), 2 (turbo speed)</p>
-
+    <h3>Controls</h3>
+    <p>W (run), A (left), S (back), D (right)</p>
+    <h3>Special Moves</h3>
+    <p>Q (juke left), E (juke right), 2 (turbo speed)</p>
+        
 </div>
+
+
+
 <!-- add button to make the screen disappear. execute the start game function -->
 
-<button onclick = "startGame()">Start!</button><br>
+<button class = "start-game" onclick = "startGame()">Start!</button><br>
+
+<div class = "messages">
+
+    <img class = "touchdownImage" src = "https://media.giphy.com/media/l378pCaLVyBHA4HGE/giphy.gif">
+    <img class = "tackledImage" src = "https://media.giphy.com/media/l2ZE9vsa0D0JKm1os/giphy.gif">
+    <img class = "gameOverImage" src = "https://media.giphy.com/media/xT9IgOjoNds6MTABna/giphy.gif">
+    <img class = "winImage" src = "https://media.giphy.com/media/l378dgW1iZ6NCTclO/giphy.gif">
 
 </div>
+
+</div>
+
+<div class = "game">
 
 <canvas id="myGameArea" width="344" height="600" style="background: url('./images/field attempt.png')">
 </canvas>
+
+</div>
 
 
 </div>

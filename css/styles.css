@@ -13,10 +13,77 @@
     background-color: #093162;
     color: white;
     text-align: center;
+    width: 15em;
+    margin-left: 1em;
+    margin-top: 1em;
+    border: 1px solid white;
+    padding-bottom: 1.5em;
 }
 
 .instructions {
     background-color: #093162;
     color: white;
     text-align: center;
+    width: 15em;
+    margin-top: 2em;
+    margin-left: 1em;
+    border: 1px solid white;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+.game {
+    margin-right: 1.5em;
+}
+
+.start-game {
+    border: 1px solid white;
+}
+
+.touchdownImage {
+    display: none;
+}
+
+.tackledImage {
+    display: none;
+}
+
+.gameOverImage {
+    display: none;
+}
+
+.winImage {
+    display: none;
+}
+
+.messages {
+    border: 1px solid red;
+}
+
+.nav {
+    color: white;
+    background-color: #093162;
+    padding-top: .1em;
+    height: 7em;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    border: 1px solid #093162;
+}
+
+li {
+    float: left;
+    text-decoration: none;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    background-color: white;
+    color: #093162;
 }

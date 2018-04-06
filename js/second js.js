@@ -115,8 +115,17 @@ console.log(allDefenders);
 
 
 function updateStuff() {
+    var scoreMessage = document.querySelector(".touchdownImage");
+    // var tackledMessage = document.querySelector(".tackledImage");
+    // var gameOverMessage = document.querySelector("gameOverImage");
+    // var winMessage = document.querySelector("winImage");
+    scoreMessage.style.display = "none";
+    //tackledMessage.style.display = "none";
+    // gameOverMessage.style.display = "none";
+    // winMessage.style.display = "none";
     if (barkley.y <= 30) {
     touchdownMessage.drawMe();
+    scoreMessage.style.display = "inline";
     //     ctx.font = "20px Arial";
     // ctx.fillText("Touchdown!", canvas.width / 2, canvas.height / 2);
     score += 7;
@@ -142,8 +151,10 @@ function updateStuff() {
     };
 
     if (defenderCollision()) {
-        ctx.font = "20px Arial";
-        ctx.fillText("You were tackled. Next down.", canvas.width/ 2, canvas.height / 2);
+        var tackledMessage = document.querySelector(".tackledImage");
+        ctx.font = "25px Arial";
+        ctx.fillText("You were tackled. Next down.", 100, 300);
+        tackledMessage.style.display = "inline";
         down += 1;
         document.getElementById ("down-id").innerText= down;
         setTimeout (startGame, 3000);
@@ -152,13 +163,14 @@ function updateStuff() {
 }
 
 if (down >= 4) {
-    alert("Game Over!")
+    var gameOverMessage = document.querySelector("gameOverImage");
+    gameOverMessage.style.display = "inline";
 
     //Start over button
 }
 
 if (score >= 28) {
-    alert("Penn State Wins!")
+    winMessage.style.display = "inline";
 
     //next round / play again button
 }
